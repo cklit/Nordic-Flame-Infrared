@@ -1,4 +1,4 @@
-"""Light platform for L8 Infrared."""
+"""Light platform for Nordic Flame."""
 
 from typing import Any, override
 
@@ -14,9 +14,9 @@ from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.dispatcher import async_dispatcher_connect
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
-from .codes import L8Code
+from .codes import NordicFlameCode
 from .const import CONF_INFRARED_ENTITY_ID
-from .entity import L8BaseEntity
+from .entity import NordicFlameBaseEntity
 
 PARALLEL_UPDATES = 1
 
@@ -32,11 +32,13 @@ async def async_setup_entry(
     if not (infrared_entity_id := entry.data.get(CONF_INFRARED_ENTITY_ID)):
         return
 
-    async_add_entities([L8LightEntity(entry, infrared_entity_id)])
+    async_add_entities([NordicFlameLightEntity(entry, infrared_entity_id)])
 
 
-class L8LightEntity(L8BaseEntity, InfraredEmitterConsumerEntity, LightEntity):
-    """L8 candle light. State is assumed, since IR is one-way."""
+class NordicFlameLightEntity(
+    NordicFlameBaseEntity, InfraredEmitterConsumerEntity, LightEntity
+):
+    """Candle light. State is assumed, since IR is one-way."""
 
     _attr_assumed_state = True
     _attr_color_mode = ColorMode.ONOFF
@@ -55,18 +57,18 @@ class L8LightEntity(L8BaseEntity, InfraredEmitterConsumerEntity, LightEntity):
     @override
     async def async_turn_on(self, **kwargs: Any) -> None:
         """Turn on, optionally setting an effect."""
-        await self._send_command(L8Code.ON.to_command())
+        await self._send_command(NordicFlameCode.ON.to_command())
         self._attr_is_on = True
         effect: str | None = kwargs.get(ATTR_EFFECT)
         if effect in EFFECTS:
-            await self._send_command(L8Code[effect.upper()].to_command())
+            await self._send_command(NordicFlameCode[effect.upper()].to_command())
             self._attr_effect = effect
         self.async_write_ha_state()
 
     @override
     async def async_turn_off(self, **kwargs: Any) -> None:
         """Turn off."""
-        await self._send_command(L8Code.OFF.to_command())
+        await self._send_command(NordicFlameCode.OFF.to_command())
         self._attr_is_on = False
         self.async_write_ha_state()
 

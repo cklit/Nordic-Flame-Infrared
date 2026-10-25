@@ -1,4 +1,4 @@
-"""IR codes for the L8 10-key LED candle remote.
+"""IR codes for Nordic Flame and L8 Design LED candle remotes.
 
 NEC extended, address 0xB708, 38 kHz. Same set as
 infrared_protocols' Generic10KeyB708Code; defined here so the integration
@@ -13,8 +13,8 @@ from infrared_protocols.commands.nec import NECCommand
 NEC_ADDRESS = 0xB708
 
 
-class L8Code(IntEnum):
-    """L8 remote command codes."""
+class NordicFlameCode(IntEnum):
+    """Remote command codes."""
 
     ON = 0x00
     OFF = 0x02

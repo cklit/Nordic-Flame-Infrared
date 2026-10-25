@@ -1,4 +1,4 @@
-"""Event platform for L8 Infrared: fires when the physical remote is used."""
+"""Event platform for Nordic Flame: fires when the physical remote is used."""
 
 import logging
 from typing import override
@@ -15,9 +15,9 @@ from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.dispatcher import async_dispatcher_send
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
-from .codes import NEC_ADDRESS, L8Code
+from .codes import NEC_ADDRESS, NordicFlameCode
 from .const import CONF_INFRARED_RECEIVER_ENTITY_ID
-from .entity import L8BaseEntity
+from .entity import NordicFlameBaseEntity
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -33,14 +33,16 @@ async def async_setup_entry(
     if not (receiver_entity_id := entry.data.get(CONF_INFRARED_RECEIVER_ENTITY_ID)):
         return
 
-    async_add_entities([L8EventEntity(entry, receiver_entity_id)])
+    async_add_entities([NordicFlameEventEntity(entry, receiver_entity_id)])
 
 
-class L8EventEntity(L8BaseEntity, InfraredReceiverConsumerEntity, EventEntity):
-    """Fires an event for each L8 key press received."""
+class NordicFlameEventEntity(
+    NordicFlameBaseEntity, InfraredReceiverConsumerEntity, EventEntity
+):
+    """Fires an event for each key press received."""
 
     _attr_translation_key = "received_command"
-    _attr_event_types = [code.name.lower() for code in L8Code]
+    _attr_event_types = [code.name.lower() for code in NordicFlameCode]
 
     def __init__(self, entry: ConfigEntry, receiver_entity_id: str) -> None:
         """Initialize the event entity."""
@@ -57,12 +59,12 @@ class L8EventEntity(L8BaseEntity, InfraredReceiverConsumerEntity, EventEntity):
             return
 
         try:
-            code = L8Code(received.command)
+            code = NordicFlameCode(received.command)
         except ValueError:
             return
 
         event_type = code.name.lower()
-        _LOGGER.debug("Received L8 command: %s (0x%02X)", event_type, code.value)
+        _LOGGER.debug("Received command: %s (0x%02X)", event_type, code.value)
 
         self._trigger_event(event_type)
         async_dispatcher_send(self.hass, self._entry.entry_id, event_type)

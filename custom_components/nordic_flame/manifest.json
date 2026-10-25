@@ -1,0 +1,12 @@
+{
+  "domain": "nordic_flame",
+  "name": "Nordic Flame",
+  "codeowners": ["@cklit"],
+  "config_flow": true,
+  "dependencies": ["infrared"],
+  "documentation": "https://github.com/cklit/Nordic-Flame-Infrared",
+  "integration_type": "device",
+  "iot_class": "assumed_state",
+  "issue_tracker": "https://github.com/cklit/Nordic-Flame-Infrared/issues",
+  "version": "2026.10.25"
+}

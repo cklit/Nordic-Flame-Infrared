@@ -1,4 +1,4 @@
-"""Config flow for L8 Infrared."""
+"""Config flow for Nordic Flame."""
 
 from typing import Any, override
 
@@ -16,8 +16,8 @@ from homeassistant.helpers.selector import EntitySelector, EntitySelectorConfig
 from .const import CONF_INFRARED_ENTITY_ID, CONF_INFRARED_RECEIVER_ENTITY_ID, DOMAIN
 
 
-class L8ConfigFlow(ConfigFlow, domain=DOMAIN):
-    """Handle a config flow for L8 Infrared."""
+class NordicFlameConfigFlow(ConfigFlow, domain=DOMAIN):
+    """Handle a config flow for Nordic Flame."""
 
     VERSION = 1
 
@@ -66,7 +66,7 @@ class L8ConfigFlow(ConfigFlow, domain=DOMAIN):
                     else entity_id
                 )
                 return self.async_create_entry(
-                    title=f"L8 candle via {name}", data=user_input
+                    title=f"Nordic Flame candle via {name}", data=user_input
                 )
             errors["base"] = "missing_infrared_entity"
 

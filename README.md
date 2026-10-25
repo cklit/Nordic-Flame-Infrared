@@ -1,6 +1,10 @@
-# L8 Infrared
+# Nordic Flame
 
-Home Assistant integration for L8 LED candles with the 10-key IR remote. Sends commands through any infrared emitter entity (e.g. ESPHome) and can listen to the physical remote through an infrared receiver entity.
+Home Assistant integration for Nordic Flame and L8 Design LED candles with an IR remote. Replaces or complements the physical remote: sends commands through any infrared emitter entity (e.g. ESPHome) and can listen to the physical remote through an infrared receiver entity.
+
+![L8 Design and Nordic Flame remotes](images/remotes.jpg)
+
+The Nordic Flame remote has no Candle/Light mode keys; those buttons come from the L8 Design remote.
 
 Requires a Home Assistant version with the `infrared` integration.
 
@@ -12,7 +16,7 @@ Requires a Home Assistant version with the `infrared` integration.
 
 ## Install
 
-HACS → three-dot menu → Custom repositories → add `https://github.com/cklit/L8-Tealight-Infrared`, type Integration. Install, restart Home Assistant, then add L8 Infrared under Settings → Devices & services.
+HACS → three-dot menu → Custom repositories → add `https://github.com/cklit/Nordic-Flame-Infrared`, type Integration. Install, restart Home Assistant, then add Nordic Flame under Settings → Devices & services.
 
 ## IR codes
 

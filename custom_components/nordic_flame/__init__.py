@@ -1,4 +1,4 @@
-"""The L8 Infrared integration."""
+"""The Nordic Flame integration."""
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
@@ -8,7 +8,7 @@ PLATFORMS: list[Platform] = [Platform.BUTTON, Platform.EVENT, Platform.LIGHT]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    """Set up L8 Infrared from a config entry."""
+    """Set up Nordic Flame from a config entry."""
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
 

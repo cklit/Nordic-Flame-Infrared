@@ -1,7 +1,7 @@
 {
   "config": {
     "abort": {
-      "already_configured": "An L8 device is already set up with this infrared entity.",
+      "already_configured": "A candle is already set up with this infrared entity.",
       "no_infrared_entities": "No infrared emitters or receivers found. Set up an infrared device (e.g. ESPHome) first.",
       "reconfigure_successful": "Reconfiguration was successful."
     },
@@ -10,7 +10,7 @@
     },
     "step": {
       "user": {
-        "title": "Set up L8 candle",
+        "title": "Set up Nordic Flame candle",
         "description": "Select at least one infrared emitter or receiver.",
         "data": {
           "infrared_entity_id": "Infrared emitter",
@@ -22,7 +22,7 @@
         }
       },
       "reconfigure": {
-        "title": "Reconfigure L8 candle",
+        "title": "Reconfigure Nordic Flame candle",
         "data": {
           "infrared_entity_id": "Infrared emitter",
           "infrared_receiver_entity_id": "Infrared receiver"

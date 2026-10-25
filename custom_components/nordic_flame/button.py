@@ -1,4 +1,4 @@
-"""Button platform for L8 Infrared."""
+"""Button platform for Nordic Flame."""
 
 from typing import override
 
@@ -8,21 +8,21 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
-from .codes import L8Code
+from .codes import NordicFlameCode
 from .const import CONF_INFRARED_ENTITY_ID
-from .entity import L8BaseEntity
+from .entity import NordicFlameBaseEntity
 
 PARALLEL_UPDATES = 1
 
 BUTTONS = [
-    L8Code.BRIGHTNESS_UP,
-    L8Code.BRIGHTNESS_DOWN,
-    L8Code.TIMER_2H,
-    L8Code.TIMER_4H,
-    L8Code.TIMER_6H,
-    L8Code.TIMER_8H,
-    L8Code.CANDLE,
-    L8Code.LIGHT,
+    NordicFlameCode.BRIGHTNESS_UP,
+    NordicFlameCode.BRIGHTNESS_DOWN,
+    NordicFlameCode.TIMER_2H,
+    NordicFlameCode.TIMER_4H,
+    NordicFlameCode.TIMER_6H,
+    NordicFlameCode.TIMER_8H,
+    NordicFlameCode.CANDLE,
+    NordicFlameCode.LIGHT,
 ]
 
 
@@ -36,15 +36,17 @@ async def async_setup_entry(
         return
 
     async_add_entities(
-        L8ButtonEntity(entry, infrared_entity_id, code) for code in BUTTONS
+        NordicFlameButtonEntity(entry, infrared_entity_id, code) for code in BUTTONS
     )
 
 
-class L8ButtonEntity(L8BaseEntity, InfraredEmitterConsumerEntity, ButtonEntity):
-    """Button that sends one L8 IR code."""
+class NordicFlameButtonEntity(
+    NordicFlameBaseEntity, InfraredEmitterConsumerEntity, ButtonEntity
+):
+    """Button that sends one IR code."""
 
     def __init__(
-        self, entry: ConfigEntry, infrared_entity_id: str, code: L8Code
+        self, entry: ConfigEntry, infrared_entity_id: str, code: NordicFlameCode
     ) -> None:
         """Initialize the entity."""
         super().__init__(entry)

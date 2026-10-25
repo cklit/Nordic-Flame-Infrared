@@ -1,5 +1,5 @@
-"""Constants for the L8 Infrared integration."""
+"""Constants for the Nordic Flame integration."""
 
-DOMAIN = "l8_infrared"
+DOMAIN = "nordic_flame"
 CONF_INFRARED_ENTITY_ID = "infrared_entity_id"
 CONF_INFRARED_RECEIVER_ENTITY_ID = "infrared_receiver_entity_id"
