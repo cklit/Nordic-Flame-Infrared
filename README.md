@@ -4,7 +4,7 @@ Home Assistant integration for Nordic Flame and L8 Design LED candles with an IR
 
 ![L8 Design and Nordic Flame remotes](images/remotes.jpg)
 
-The integration uses the L8 Design remote's codes. Its On/Off keys switch both L8 Design and Nordic Flame candles, while the Nordic Flame remote (the same one that ships with Deluxe Homeart candles) only switches Nordic Flame (and Deluxe Homeart) candles. The Candle/Light mode keys also come from the L8 Design remote; the Nordic Flame remote doesn't have them, but Nordic Flame candles still react to the commands.
+The integration uses the L8 Design remote's codes, because its On/Off keys switch both L8 Design and Nordic Flame candles. The Nordic Flame remote (the same one that ships with Deluxe Homeart candles) only switches Nordic Flame (and Deluxe Homeart) candles. The Candle/Light mode keys also come from the L8 Design remote; the Nordic Flame remote doesn't have them, but Nordic Flame candles still react to the commands.
 
 Requires a Home Assistant version with the `infrared` integration.
 
