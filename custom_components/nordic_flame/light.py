@@ -78,7 +78,7 @@ class NordicFlameLightEntity(
         if event_type in ("on", "off"):
             self._attr_is_on = event_type == "on"
         elif event_type in EFFECTS:
-            self._attr_is_on = True
+            # Mode keys don't turn the candles on, so only track the effect.
             self._attr_effect = event_type
         else:
             return
