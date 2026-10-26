@@ -6,6 +6,7 @@ from homeassistant.components.button import ButtonEntity
 from homeassistant.components.infrared import InfraredEmitterConsumerEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers.dispatcher import async_dispatcher_send
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from .codes import NordicFlameCode
@@ -15,6 +16,8 @@ from .entity import NordicFlameBaseEntity
 PARALLEL_UPDATES = 1
 
 BUTTONS = [
+    NordicFlameCode.ON,
+    NordicFlameCode.OFF,
     NordicFlameCode.BRIGHTNESS_UP,
     NordicFlameCode.BRIGHTNESS_DOWN,
     NordicFlameCode.TIMER_2H,
@@ -60,3 +63,5 @@ class NordicFlameButtonEntity(
     async def async_press(self) -> None:
         """Press the button."""
         await self._send_command(self._code.to_command())
+        # Let the light update its assumed state, as for a received press.
+        async_dispatcher_send(self.hass, self._entry.entry_id, self._code.name.lower())

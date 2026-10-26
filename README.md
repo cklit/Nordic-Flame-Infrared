@@ -11,7 +11,7 @@ Requires a Home Assistant version with the `infrared` integration.
 ## Entities
 
 - Light: on/off, effects Candle and Steady light (assumed state)
-- Buttons: Dim up, Dim down, Timer 2h/4h/6h/8h, Candle, Light
+- Buttons: On, Off, Dim up, Dim down, Timer 2h/4h/6h/8h, Candle, Light
 - Event: fires on presses from the physical remote (only if a receiver is selected)
 
 ## Install

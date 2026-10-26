@@ -36,6 +36,8 @@
   },
   "entity": {
     "button": {
+      "on": { "name": "On" },
+      "off": { "name": "Off" },
       "brightness_down": { "name": "Dim down" },
       "brightness_up": { "name": "Dim up" },
       "timer_2h": { "name": "Timer 2h" },

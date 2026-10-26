@@ -1,6 +1,8 @@
 {
   "entity": {
     "button": {
+      "on": { "default": "mdi:power-on" },
+      "off": { "default": "mdi:power-off" },
       "brightness_down": { "default": "mdi:brightness-5" },
       "brightness_up": { "default": "mdi:brightness-7" },
       "timer_2h": { "default": "mdi:timer" },
